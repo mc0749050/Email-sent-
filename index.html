@@ -5,16 +5,17 @@
 </head>
 <body>
     <h2>Send an Email</h2>
-    <form id="emailForm" onsubmit="submit()">
+    <form>
         <label for="to">To:</label><br>
         <input type="email" id="emailsend" name="to" required><br><br>
         <label for="subject">Subject:</label><br>
         <input type="text" id="subject" name="subject" required><br><br>
         <label for="message">Message:</label><br>
         <textarea id="body" name="message" rows="4" cols="50" required></textarea><br><br>
-        <button type="submit">Send Email</button>
+        <button onclick="submit()" type="button">Send Email</button>
     </form>
-<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js">
+</script>
     <script>
         function submit(){
           Email.send({
@@ -22,11 +23,11 @@
     Username : "mc0749050@gmail.com",
     Password : "F9B902C09156295283E62892C6357D81FA51",
     To : "mc0749050@gmail.com",
-    From : document.getElementById("emailsend").value,
-    Subject : document.getElementById("subject").value,
-    Body : document.getElementById("body").value,
+    From : "mc0749050@gmail.com",
+    Subject : "Welcome to codewithmukesh ",
+    Body : "hello",
 }).then(
-  message => alert("successfully sent")
+  message => alert(message)
 );
         }
     </script>
