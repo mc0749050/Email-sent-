@@ -1,35 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Send Email</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
-    <h2>Send an Email</h2>
-    <form>
-        <label for="to">To:</label><br>
-        <input type="email" id="emailsend" name="to" required><br><br>
-        <label for="subject">Subject:</label><br>
-        <input type="text" id="subject" name="subject" required><br><br>
-        <label for="message">Message:</label><br>
-        <textarea id="body" name="message" rows="4" cols="50" required></textarea><br><br>
-        <button onclick="submit()" type="button">Send Email</button>
-    </form>
-<script src="https://smtpjs.com/v3/smtp.js">
-</script>
-    <script>
-        function submit(){
-          Email.send({
-    Host : "smtp.elasticemail.com",
-    Username : "mc0749050@gmail.com",
-    Password : "F9B902C09156295283E62892C6357D81FA51",
-    To : "mc0749050@gmail.com",
-    From : "mc0749050@gmail.com",
-    Subject : "Welcome to codewithmukesh ",
-    Body : "hello",
-}).then(
-  message => alert(message)
-);
-        }
-    </script>
+  <input type="text" id="to" placeholder="Email id"> <br>
+  <textarea id="message" cols="30" rows="10"></textarea>
+  
+  <button onclick="sendMail()">Send</button>
+  
+  <script>
+    function sendMail(){
+      (function(){
+        emailjs.init("uQ4vmRtvI_xZz6NDc");
+      })();
+      
+      
+      var params = {
+        sendername: "codewithmukesh",
+        to: document.getElementById("to").value,
+        subject: "welcome to codewithmukesh",
+        message: "",
+      };
+      
+      var serviceID = "service_c3ony9i";
+      var templateID = "template_v04qshe";
+      
+      emailjs.send(serviceID, templateID, params).then( res => {
+        alert("send successfully");
+      })
+      .catch();
+    }
+  </script>
 </body>
 </html>
